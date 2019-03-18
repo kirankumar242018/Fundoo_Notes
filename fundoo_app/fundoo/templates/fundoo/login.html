@@ -1,0 +1,53 @@
+{% extends "fundoo/base2.html" %}
+{% load staticfiles %}
+<!--<head> <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">-->
+    <!--<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+
+
+
+<!--</head>-->
+{% load crispy_forms_tags %}
+{% block body %}
+<center>
+    {% if messages %}
+        <p class="messages">
+            {% for message in messages %}
+            <p style="color:red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </p>
+    {% endif %}
+        <div class="content-section" style=" margin-right: 108px;
+               margin-left: 108px;
+               margin-top: 3px;">
+                    <form method="post" >
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">Log In Here</legend>
+                                {{ form|crispy }}
+
+                        <!--<center><h4>Login</h4></center>-->
+                        <!--<hr>-->
+                        <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" name="username" maxlength="150" autofocus="" class="textinput textInput form-control" required="" id="username">
+                        </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" name="password" class="textinput textInput form-control" required="" id="password">
+                            </div>
+                            <div class="form-group">
+                                <button id="btn" class="btn btn-outline-info" type="submit">Log In</button>
+                            </div>
+                     </fieldset>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Need An Account?
+                            <a class="ml-2" href="{% url 'register'  %}">Sign Up Now</a>
+                            <a class="ml-2" href="{% url 'password_reset' %}" id="btn2" class="btn btn-link">Forgot your password?</a>
+
+                        </small>
+                    </div>
+        </div>
+</center>
+{% endblock %}

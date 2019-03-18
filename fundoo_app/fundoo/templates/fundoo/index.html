@@ -1,0 +1,16 @@
+{% extends "fundoo/base2.html" %}
+{% block body %}
+
+<script>
+localStorage.setItem('token', ("{{token.data}}"));
+
+var value = localStorage.getItem('token');
+console.log(value)
+</script>
+    <h2 style="font-size:5vw">You have been logged in to fundoo_app welcome</h2>
+
+    <img src="https://www.w3schools.com/w3images/map.jpg"
+         style="max-width:100%;height:auto;">
+
+
+{% endblock %}

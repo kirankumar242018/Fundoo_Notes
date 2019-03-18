@@ -1,0 +1,222 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
+
+      <!--external css file -->
+      <link rel="stylesheet" type="text/css" href="{% static 'Css/note.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'Css/date-time-picker.css' %}">
+      <script type="text/javascript" src="{% static 'Js/date-time-picker.js' %}"></script>
+      <script type="text/javascript" src="{% static 'Js/base.js' %}"></script>
+      <script type="text/javascript" src="{% static 'Js/grid-list-view.js' %}"></script>
+      <script type="text/javascript" src="{% static 'Js/card-footer-btn.js' %}"></script>
+      <script type="text/javascript" src="{% static 'Js/label-modal.js' %}"></script>
+      <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+
+    <title>fandooNotes</title>
+  </head>
+<body>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noteupdatemodal">Profile modal</button>
+
+<!-- Note-modal -->
+        <div class="modal fade" id="noteupdatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-md" role="document">
+          <form method="post" action="">
+              {% csrf_token %}
+            <div class="modal-content">
+                <!--modal header-->
+              <div class="modal-header" style="padding: 0%;">
+               <div class="view view-cascade overlay">
+               <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/31.jpg" alt="Card image cap">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+               </div>
+              </div>
+                <!--modal body-->
+              <div class="modal-body">
+              <div class="d-flex flex-row">
+                  <div class="p">
+                      <input id="note-title" class="form-control" type="text" placeholder="gfdjgjfd" aria-label="Create new label" maxlength="50" dir="ltr"
+                             style="border: none; border-bottom: 1px solid transparent;box-shadow: none;font-size: 14px;width: 429%;">
+                  </div>
+                  <div class="p" style="margin-left: 71%;">
+                      <button type="submit" class="btn btn-light "  >
+                           <span><ion-icon name="pricetag"></ion-icon></span>
+                     </button>
+                  </div>
+              </div>
+
+
+              <div class="d-flex flex-column">
+                  <div class="p">
+                      <textarea class="form-control z-depth-1" id="modal-textarea"name="modal-textarea" rows="3" placeholder="Take a note..."></textarea>
+
+                  </div>
+              </div>
+
+              <div class="d-flex flex-column">
+                  <div class="p">
+
+                  </div>
+              </div>
+
+              <div class="d-flex flex-column">
+                  <div class="p">
+
+                  </div>
+              </div>
+
+              </div>
+
+                <!--modal footer-->
+            <div class="modal-footer">
+
+        <div class="d-flex flex-row" style="padding-right: 42%;">
+        <div class="btn-group">
+          <button class="btn btn-light footer-btn " type="button" id="dropdown-reminderMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span><ion-icon name="notifications"></ion-icon></span>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown-reminderMenuButton">
+            <h6 class="dropdown-header">Reminder</h6>
+            <div class="dropdown-divider"></div>
+            <form>
+              <div class="form-group">
+                  <label class="label-control">&nbsp Date &nbsp  </label>
+                  <input type="text" class="form-control datepicker" value="12/03/2019" id="date">
+              </div>
+              <div class="form-group">
+                  <label class="label-control">&nbsp  Time &nbsp  </label>
+                  <input type="text" class="form-control timepicker" value="14:00">
+              </div>
+              <button type="sumbit" class="btn btn-light" id="save-btn">save</button>
+            </form>
+          </div>
+           </div>
+          <!--<a class="dropdown-item" href="#" id="setreminder"> <span><ion-icon name="alarm"></ion-icon></span> &nbsp  Pick a date & time</a>-->
+
+
+          <!-- Collaborator-->
+        <button type="button" class="btn btn-light footer-btn "  data-toggle="modal" data-target="#myModal-2" >
+          <span><ion-icon name="person"></ion-icon></span>
+        </button>
+
+          <div class="modal fade" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-2">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" >
+                    <div class="modal-header" >
+                        <h5 class="modal-title" id="myModalLabel-2">Collaborators</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="d-flex flex-row">
+                          <div class="p">
+                              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Avatar" class="avatar"
+                                   style="vertical-align: middle; width: 50px;height: 50px;border-radius: 50%;">
+                          </div>
+                         <div class="d-flex flex-column" style="margin-left: 5%;">
+                             <div class="p" style="width: 244%"><span style="font-weight: 700;font-size: 13px;">Kiran Kumar</span>
+                                 <span style="font-weight: 700;font-size: 13px;"><i>(owner)</i></span></div>
+                          <div class="p" style="width: 244%"><span style="font-size: 13px;">kiranchallengingstar@gmail.com</span></div>
+
+                        </div>
+                        <div class="p" style="margin-left: 45%;" >
+                            <button type="button" class="btn  btn-light" >
+                           <span><ion-icon name="close"></ion-icon></span> </button>
+                        </div>
+                        </div>
+
+                        <div class="d-flex flex-row" style="margin-top: 2%;">
+                           <div class="p">
+                           <button type="button" class="btn  btn-light" id="collaborator-btn" >
+                               <span><ion-icon name="contacts"></ion-icon></span>
+                           </button>
+                           </div>
+
+                           <div class="justify-content-lg-between" style="width: 95%;margin-top: 2%;margin-left: 5%;">
+                            <input style="width: 101%;border: none;font-size: 13px"
+                                   class=form-control" type="text" placeholder="Person or email to share with" aria-label="Person or email to share with" maxlength="320" role="combobox" aria-autocomplete="list" dir="ltr">
+                           </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color: rgba(0,0,0,0.07);">
+                        <button type="button" class="btn  btn-light footer-btn " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-light footer-btn ">Save</button>
+                    </div>
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+<!--close collaborator-->
+        <div class="btn-group">
+        <button class="btn btn-light footer-btn " type="button" id="dropdown-colorMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span><ion-icon name="color-palette"></ion-icon></span>
+        </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown-colorMenuButton">
+          <div class="btn-col">
+              <button class="btn btn-link " type="button"  name="white" style="background-color:white"></button>
+              <button class="btn btn-link" type="button" style="background-color:#f28b82;"  name="#f28b82" ></button>
+              <button class="btn btn-link" type="button" style="background-color:#fbbc04;"  name="#fbbc04" ></button>
+              <button class="btn  btn-link" type="button" style="background-color:#fff475"  name="#fff475" ></button>
+          </div>
+          <div class="btn-col">
+              <button class="btn btn-link" type="button" style="background-color:#ccff90;"  name="#ccff90" ></button>
+              <button class="btn btn-link" type="button" style="background-color:#a7ffeb;"  name="#a7ffeb" ></button>
+              <button class="btn btn-link" type="button" style="background-color:#cbf0f8;"  name="#cbf0f8" ></button>
+              <button class="btn btn-link" type="button" style="background-color:#aeaefb ;" name="#aeaefb" ></button>
+          </div>
+          <div class="btn-col">
+              <button class="btn btn-link" type="button" style="background-color:#d7aefb;" name="#d7aefb" ></button>
+              <button class="btn btn-link" type="button" style="background-color:#fdcfe8;" name="#fdcfe8"></button>
+              <button class="btn btn-link" type="button" style="background-color:#e6c9a8;" name="#e6c9a8"></button>
+              <button class="btn btn-link" type="button" style="background-color:#e8eaed;" name="#e8eaed"></button>
+          </div>
+        </div>
+        </div>
+        <button type="button" class="btn btn-light footer-btn ">
+          <span><ion-icon name="images"></ion-icon></span>
+        </button>
+        <button type="button" class="btn btn-light footer-btn ">
+          <span><ion-icon name="archive"></ion-icon></span>
+        </button>
+         <div class="btn-group">
+          <button class="btn btn-light footer-btn  " type="button" id="dropdown-moreMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span><ion-icon name="more"></ion-icon></span>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown-moreMenuButton">
+            <a class="dropdown-item" href="#">Delete note</a>
+            <a class="dropdown-item" href="#">Add label</a>
+            <a class="dropdown-item" href="#">Make a copy</a>
+         </div>
+         </div>
+    </div>
+         <div class="btn-group">
+             <button type="submit" class="btn btn-light footer-btn ">Close</button>
+         </div>
+        </div>
+        </div>
+      </form>
+      </div>
+    </div>
+<!--close note-modal-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--date-time-->
+    <script src="https://rawgit.com/creativetimofficial/material-kit/master/assets/js/plugins/moment.min.js"></script>
+    <script src="https://rawgit.com/creativetimofficial/material-kit/master/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+</body>
+</html>

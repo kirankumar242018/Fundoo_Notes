@@ -1,0 +1,21 @@
+<div class="label-item">
+                            <span class="label-span"></span>
+                            <div class=" "style="    margin-left: 17px; margin-bottom: 14px;;">Labels</div>
+                             {% for label in all_labels %}
+                            <li class="label-list" role="menuitem" id="gfdg">
+                                <a class="label-anchor" tabindex="0"    style="    margin-left: -56px; margin-top: -31px;margin-bottom: -27px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="gb_Uc">
+                                        <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
+                                    </svg>
+                                    <span class="label-span" id="new-label">
+                                        <label style="margin-left: -32px;margin-top: -63px;"> </label></span>
+                                </a>
+                            </li>
+                              {% endfor %}
+                        <li style="margin-top: 22px;">
+                            <a href="#" data-toggle="modal" data-target="#" id="label-modal">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="fa fa-anchor solo"><b>Edit labels</b></span>
+                            </a>
+                        </li>
+                        </div>

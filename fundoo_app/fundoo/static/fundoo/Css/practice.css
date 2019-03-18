@@ -1,0 +1,3 @@
+.modal-footer>:not(:first-child) {
+margin-left: 1.25rem;
+}
