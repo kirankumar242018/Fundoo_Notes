@@ -76,7 +76,11 @@ class UserUpdateForm(forms.ModelForm):
 
 
 
-
+# echo "COPYING NEW JAR FILE FROM JENKINS INSTANCE TO DEPLOYMENT INSTANCE"
+# #cp -rf /var/lib/jenkins/workspace/jenkinsCICD/fundoo_app /home/ubuntu/
+# scp -r /var/lib/jenkins/workspace/jenkinsCICD/fundoo_app ubuntu@172.31.21.137:/home/ubuntu/
+# #sudo systemctl start nginx
+# #sudo systemctl start gunicorn
 
 
 

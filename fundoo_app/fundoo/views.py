@@ -17,6 +17,9 @@ from django.core.cache import cache
 
 from rest_framework.settings import api_settings
 # from django.contrib.auth.models import User
+from self import self
+
+from .Coustom_Decorator import custom_login_required
 from .models import Profile, Notes, Labels, MapLabel
 from .tokens import account_activation_token
 from .forms import UserRegistrationForm, ProfileUpdateForm, UserUpdateForm
@@ -25,7 +28,7 @@ from rest_framework import generics
 
 from . import models
 # from . import serializers
-
+from .redis_services import redis_info
 
 from django.contrib.auth import get_user_model
 
@@ -49,6 +52,7 @@ def index(request):
 
 
 def logout(request):
+    redis_info.flush_all(self)
     return render(request, 'fundoo/logout.html')  # renders the index page
 
 
@@ -109,7 +113,8 @@ def user_login(request):
                 j_token = jwt_token['token']
                 res['message'] = "Welcome You Are Logged Successfully.."  # printing the message
                 res['success'] = True  # initialize to True
-                cache.set('token', "token")  # printing the data in  cache set
+                # cache.set('token', "token")  # printing the data in  cache set
+                redis_info.set_token(self, 'token', j_token)
                 res['data'] = j_token  # storing data token
                 print(res)  # printing the result
                 return render(request, 'fundoo/dash_board1.html',
@@ -150,7 +155,7 @@ def user_profile(request):
     if request.method == 'POST':
         # A form bound to the POST data and create instance of form by user request
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.profile)
         # If all validation rules pass
         if u_form.is_valid() and p_form.is_valid():
             # save form
@@ -202,6 +207,8 @@ def activate(request, uidb64, token):
     # return redirect('user_login')
 
 
+@custom_login_required
+@login_required
 def home(request):
     allnotes = Notes.objects.all().order_by('-created_time')
     all_labels = Labels.objects.all().order_by('-created_time')
@@ -227,6 +234,7 @@ from django.http import JsonResponse
 from django.core import serializers
 
 
+@custom_login_required
 def createnote(request):
     if request.method == 'POST':
 
@@ -419,7 +427,7 @@ def create_label(request):
     if request.method == 'POST':
 
         # get note id and label name from submitted form
-        label_name = request.POST.get('label')
+        label_name = request.POST.get('labels')
         print(label_name)
         label = Labels(label_name=label_name)
         # label names should not be null
@@ -472,39 +480,6 @@ def update_label(request, pk):
         # 'description':description
         'allnotes': allnotes}
     return render(request, 'notes/note_section.html', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # def addLabelOnNote(request):
 #     if request.method == 'POST':

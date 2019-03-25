@@ -310,6 +310,7 @@
       <!--End of label section-->
        <!--link section-->
       <div class="card-link">
+          <!--<h5>Card link....</h5>-->
       </div>
       <!--End of link section-->
       <!--card footer section-->
@@ -509,9 +510,9 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown-moreMenuButton">
 
-            <a class="dropdown-item" href="">Delete note others</a>
+            <a class="dropdown-item" href="{% url 'deletenote' pk=note.id %}">Delete note others</a>
               <!--{% url 'copynote' pk=note.id %}-->
-            <a class="dropdown-item" href="#">Make a copy</a>
+            <a class="dropdown-item" href="{% url 'copynote' pk=note.id %}">Make a copy</a>
             <a class="dropdown-item" href="#">Add label</a>
          </div>
          </div>

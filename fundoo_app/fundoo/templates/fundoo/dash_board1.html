@@ -16,7 +16,10 @@
 
          <link href="{% static 'fundoo/Css/cropper.min.css' %}" rel="stylesheet">
          <link rel="stylesheet" type="text/css" href="{% static 'fundoo/Css/note.css' %}">
+
          <link rel="stylesheet" type="text/css" href="{% static 'fundoo/Css/date-time-picker.css' %}">
+         <!--<link rel="stylesheet" type="text/css" href="{% static 'fundoo/Css/label.css' %}">-->
+
 
          <script type="text/javascript" src="{% static 'fundoo/Js/card-footer-btn.js' %}"></script>
          <script type="text/javascript" src="{% static 'fundoo/Js/date-time-picker.js' %}"></script>
@@ -38,23 +41,23 @@
         <title> Fundoo </title>
     </head>
     <script>
-     $(document).ready(function () {
+         $(document).ready(function () {
 
-        localStorage.setItem('token', ("{{token.data}}"));
-         var value = localStorage.getItem('token');
-         console.log(value)
-         $.ajax({
-               type : "GET",
-               beforeSend: function(xhr){xhr.setRequestHeader('Authorization', value);},
-               success : function(result) {
-                   //set your variable to the result
-               },
-               error : function(result) {
-                 //handle the error
-               }
-         });
+            localStorage.setItem('token', ("{{token.data}}"));
+             var value = localStorage.getItem('token');
+             console.log(value)
+             $.ajax({
+                   type : "GET",
+                   beforeSend: function(xhr){xhr.setRequestHeader('Authorization', value);},
+                   success : function(result) {
+                       //set your variable to the result
+                   },
+                   error : function(result) {
+                     //handle the error
+                   }
+             });
 
-});
+        });
 
     </script>
     <script>
@@ -70,7 +73,7 @@
                     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navigationbar">
 
 
-                        <div class="left-side-navnar" style="min-width: 295px;" >
+                        <div class="left-side-navbar" style="min-width: 295px;" >
                             <button type="button" class="btn btn-light" id="menu-toggle">
                                <ion-icon name="menu" style="font-size: 28px;"></ion-icon>
                             </button>
@@ -121,7 +124,6 @@
                         <div class="navbar-nav ml-auto nav-flex-icons dropdown " >
                             <a class="nav-link " id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <!--{{ profile.image.url }}-->
-
                               <img src= "https://pbs.twimg.com/media/CsVS813UIAA2yA5.jpg" class="rounded-circle" alt="avatar image" height="40"/>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
@@ -193,27 +195,26 @@
                     </div>
 
                     <!--sidebar closed-->
-
                     <script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
 
                   <script>
 
                       function createLabel() {
-                            var label = $('#create-label').val()
-                            console.log(label)
-                        $.ajax({
-                          method: 'POST',
-                          url: '/create_label/',
-                          data: {
-                            'label':label,
-                            'csrfmiddlewaretoken': window.CSRF_TOKEN // from index.html
-                          },
-                          success: function(data) {
-                          },
-                          error: function(xhr, status, error) {
+                                var label = $('#create-label').val()
+                                console.log(label)
+                            $.ajax({
+                              method: 'POST',
+                              url: '/create_label/',
+                              data: {
+                                'label':label,
+                                'csrfmiddlewaretoken': window.CSRF_TOKEN // from index.html
+                              },
+                              success: function(data) {
+                              },
+                              error: function(xhr, status, error) {
 
-                          }
-                        });
+                              }
+                            });
                         }
 
                   </script>
