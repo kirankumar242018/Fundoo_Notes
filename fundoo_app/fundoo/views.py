@@ -335,7 +335,7 @@ def ispinned(request):
         return JsonResponse(response_data)
 
 
-def isarchieve(request):
+def isarchive(request):
     if request.method == 'POST':
         id = request.POST.get('id')
         note = Notes.objects.get(id=id)
@@ -423,6 +423,7 @@ def restore(request, pk):
     return render(request, 'notes/note_section.html', context)
 
 
+# method to create label
 def create_label(request):
     if request.method == 'POST':
 

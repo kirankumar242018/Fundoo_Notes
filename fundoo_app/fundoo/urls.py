@@ -53,12 +53,14 @@ urlpatterns = [
     #  *****Note CRUD Operations***
     path('createnote/', views.createnote, name='createnote'),
     path('deletenote/<int:pk>', views.deletenote, name='deletenote'),
-    # url(r'^deletenote/(?P<pk>[0-9]+)/$', views.deletenote, name='deletenote'),
+
     path('copynote/<int:pk>', views.copynote, name='copynote'),
     path('restore/<int:pk>', views.restore, name='restore'),
     #  *****Note Normal Operations***
     path('setcolor/', views.setcolor, name='setcolor'),
     path('ispinned/', views.ispinned, name='ispinned'),
+    path('isarchive/', views.isarchive, name='isarchive'),
+
     path('show_archive/', views.show_archive, name='show_archive'),
     path('show_trash/', views.show_trash, name='show_trash'),
 

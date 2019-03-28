@@ -92,7 +92,7 @@ $(document).ready(function(){
 
                   }
             });
-         window.location.assign("http://127.0.0.1:8000/home/")
+         window.location.assign("http://127.0.0.1:8000/home/") // this method cause the window to load and display the document at specified url
         });
      });
 </script>
@@ -105,10 +105,10 @@ $(document).ready(function(){
                 {% csrf_token %}
                 <div class="md-form" >
                      <div class="d-flex flex-row">
-                        <input type="text" id="txtbox" class="form-control" placeholder="Title" style="box-shadow: none;" autocomplete="off">
+                        <input type="text" id="txtbox" class="form-control" placeholder="Title" style="box-shadow:none;" autocomplete="off">
                         <div class="d-flex justify-content-end" style="margin-left: 71%;">
                             <button type="button" class="btn" id="pinned" onclick="ispinned(this)">
-
+                                    <!--http://pngimg.com/uploads/pin/pin_PNG23.png-->
                                 <img src="http://pngimg.com/uploads/pin/pin_PNG23.png" width="30px" height="20px">
                             </button>
                         </div>
@@ -119,7 +119,7 @@ $(document).ready(function(){
 
                </div>
                 <div class="md-form">
-                    <textarea type="text" id="txtarea"  style="height: 40px;box-shadow: none;border:none" placeholder="Take a note"></textarea>
+                    <textarea type="text" id="txtarea"  style="height:40px; box-shadow:none; border:none" placeholder="Take a note"></textarea>
                 </div>
 
                 <div class="card-footer" id="card-footer-btn">
@@ -203,7 +203,7 @@ $(document).ready(function(){
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdown-moreMenuButton">
 
-                        <a class="dropdown-item" href="">Delete note 1</a>
+                        <a class="dropdown-item" href="#">Delete note 1</a>
                         <a class="dropdown-item" href="#">Add label</a>
                         <a class="dropdown-item" href="#">Make a copy</a>
                      </div>
